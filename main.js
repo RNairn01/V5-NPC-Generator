@@ -163,18 +163,25 @@ function generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents,
 
 
 function enableDisableVamp() {
-var childNodes = document.getElementById("vampire-generator").getElementsByTagName('*');
+const childNodes = document.getElementById("vampire-generator").getElementsByTagName('*');
+
 if (charToGen !== 'vampire') {
   for (var node of childNodes) {
   node.disabled = true
-};
-}
+  };
 
-else {
+if (charToGen === 'ghoul') {
+  for (var node of document.getElementById("ghoul-allowed").getElementsByTagName('*')) {
+    node.disabled = false
+  };
+};
+ }; 
+
+if (charToGen === 'vampire') {
   for (var node of childNodes) {
     node.disabled = false
   };
-}
+};
 };
 
 button.addEventListener('click', formChanged);
