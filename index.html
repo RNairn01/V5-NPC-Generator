@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src='main.js'  defer type='module'></script>
+  <title>V5 NPC Generator</title>
+</head>
+<body>
+
+ <!--<div id="generator">-->
+    <form id='npc-input'>
+    <div>
+      <label for="char-gen">NPC Type:</label>
+      <select name="char-gen" id="char-to-gen">
+        <option value="mortal">Mortal</option>
+        <option value="ghoul">Ghoul</option>
+        <option value="vampire" selected>Vampire</option>
+        <option value="hunter">Hunter</option>
+      </select>
+    </div>        
+    <div>
+      <input id='npc-name' type="text" placeholder="Enter NPC Name"/>
+    </div>
+    <div>
+      <div>
+      <label for="phys">Physical Dice Pool:</label>
+      <select name="phys" id="physical-pool">
+        <option value="weak">Weak</option>
+        <option value="average">Average</option>
+        <option value="adept">Adept</option>
+        <option value="formiddable">Formiddable</option>
+        <option value="deadly">Deadly</option>
+      </select>
+      </div>
+      <div>
+        <label for="ment">Mental Dice Pool:</label>
+        <select name="ment" id="mental-pool">
+            <option value="weak">Weak</option>
+            <option value="average">Average</option>
+            <option value="adept">Adept</option>
+            <option value="formiddable">Formiddable</option>
+            <option value="deadly">Deadly</option>
+        </select>
+      </div>
+      <div>
+        <label for="soc">Social Dice Pool:</label>
+        <select name="soc" id="social-pool">
+          <option value="weak">Weak</option>
+          <option value="average">Average</option>
+          <option value="adept">Adept</option>
+          <option value="formiddable">Formiddable</option>
+          <option value="deadly">Deadly</option>
+        </select>
+      </div>
+    </div>
+      <div>
+        <input id='npc-talent-1' type="text" placeholder="Enter Talent 1"/>
+        <button id='random-talent-1' type="button">Random?</button> 
+      </div>
+      <div>
+        <input id='npc-talent-2' type="text" placeholder="Enter Talent 2"/>
+        <button id='random-talent-2' type="button">Random?</button> 
+      </div>
+     
+    <div id='vampire-generator'>
+      <div>
+        <label for="npc-clan">Clan:</label>
+        <select name="npc-clan" id="clan" class="vamp">
+          <option value="Banu Haqim">Banu Haqim</option>
+          <option value="Brujah">Brujah</option>
+          <option value="Gangrel">Gangrel</option>
+          <option value="Hecata">Hecata</option>
+          <option value="Hecata(Cappadocian)">Hecata(Cappadocian)</option>
+          <option value="Hecata(Giovanni)">Hecata(Giovanni)</option>
+          <option value="Hecata(Dunsirn)">Hecata(Dunsirn)</option>
+          <option value="Hecata(Lamiae)">Hecata(Lamiae)</option>
+          <option value="Hecata(Nagaraja)">Hecata(Nagaraja)</option>
+          <option value="Hecata(Samedi)">Hecata(Samedi)</option>
+          <option value="Hecata(Children of Tenochtitlan)">Hecata(Children of Tenochtitlan)</option>
+          <option value="Hecata(Putanesca)">Hecata(Putanesca)</option>          
+          <option value="Lasombra">Lasombra</option>
+          <option value="Malkavian">Malkavian</option>
+          <option value="Nosferatu">Nosferatu</option>
+          <option value="The Ministry">The Ministry</option>
+          <option value="Ravnos">Ravnos</option>
+          <option value="Salubri">Salubri</option>
+          <option value="Toreador">Toreador</option>
+          <option value="Tremere">Tremere</option>  
+          <option value="Tzimisce">Tzimisce</option>
+          <option value="Ventrue">Ventrue</option>
+          <option value="random">Random</option>                                        
+        </select>
+        <button id='random-clan' type="button" class="vamp">Random?</button> 
+      </div> 
+      <div id='npc-disciplines'>
+        <div>
+        <label for="disc-1">Discipline 1:</label>
+        <select name="disc-1" id="npc-discipline-1" class="vamp">
+            <option value="none">None</option>
+            <option value="Animalism">Animalism</option>
+            <option value="Auspex">Auspex</option>
+            <option value="Celerity">Celerity</option>
+            <option value="Dominate">Dominate</option>
+            <option value="Fortitude">Fortitude</option>
+            <option value="Obfuscate">Obfuscate</option>
+            <option value="Oblivion">Oblivion</option>
+            <option value="Potence">Potence</option>
+            <option value="Presence">Presence</option>
+            <option value="Protean">Protean</option>
+            <option value="Blood Sorcery" selected>Blood Sorcery</option>                        
+        </select>
+        <label for="disc-1-level">Level:</label>
+        <select name="disc-1-level" id="npc-discipline-1-level" class="vamp">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option> 
+        </select>
+        <button id='random-level-1' type="button" class="vamp">Random?</button>         
+        </div>
+        <div>
+          <label for="disc-2">Discipline 2:</label>
+          <select name="disc-2" id="npc-discipline-2" class="vamp">
+            <option value="none">None</option>
+            <option value="Animalism">Animalism</option>
+            <option value="Auspex">Auspex</option>
+            <option value="Celerity" selected>Celerity</option>
+            <option value="Dominate">Dominate</option>
+            <option value="Fortitude">Fortitude</option>
+            <option value="Obfuscate">Obfuscate</option>
+            <option value="Oblivion">Oblivion</option>
+            <option value="Potence">Potence</option>
+            <option value="Presence">Presence</option>
+            <option value="Protean">Protean</option>
+            <option value="Blood Sorcery">Blood Sorcery</option>                       
+          </select>
+          <label for="disc-2-level">Level:</label>
+          <select name="disc-2-level" id="npc-discipline-2-level" class="vamp">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option> 
+           </select>
+           <button id='random-level-2' type="button" class="vamp">Random?</button>           
+          </div>
+          <div>
+            <label for="disc-3">Discipline 3:</label>
+            <select name="disc-3" id="npc-discipline-3" class="vamp">
+              <option value="none">None</option>
+              <option value="Animalism">Animalism</option>
+              <option value="Auspex">Auspex</option>
+              <option value="Celerity">Celerity</option>
+              <option value="Dominate">Dominate</option>
+              <option value="Fortitude">Fortitude</option>
+              <option value="Obfuscate" selected>Obfuscate</option>
+              <option value="Oblivion">Oblivion</option>
+              <option value="Potence">Potence</option>
+              <option value="Presence">Presence</option>
+              <option value="Protean">Protean</option>
+              <option value="Blood Sorcery">Blood Sorcery</option>                       
+            </select>
+            <label for="disc-3-level">Level:</label>
+            <select name="disc-3-level" id="npc-discipline-3-level" class="vamp">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option> 
+            </select>
+            <button id='random-level-3' type="button" class="vamp">Random?</button>            
+            </div>                  
+      </div>
+      <div id='npc-generation'>
+        <label for="gen" >Generation:</label>
+        <select name="gen" id="npc-gen-option" class="vamp">
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13" selected>13</option>
+          <option value="randomAll">Random Any Gen</option>
+          <option value="randomHigh">Random High Gen</option>            
+        </select>
+        </div>  
+      </div>                           
+      <button id='update-button' type="button">Update</button>
+     </form> 
+    </div>
+
+  <!--</div>-->
+
+</body>
+</html>
