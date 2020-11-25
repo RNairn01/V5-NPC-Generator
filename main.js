@@ -11,8 +11,9 @@ let npcGeneration = 13;
 let npcClan = 'Banu Haqim';
 let npcDisciplines = getDisciplines(npcClan);
 let physicalPool;
-let mentalPool;
 let socialPool;
+let mentalPool;
+
 const updateButton = document.getElementById('update-button');
 const randomTalent1 = document.getElementById('random-talent-1');
 const randomTalent2 = document.getElementById('random-talent-2');
@@ -52,15 +53,16 @@ function formChanged() {
  npcTrueFaith = document.getElementById('true-faith-input').value;
 
 //Sets type of character to be generated
- char = generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith); 
+ char = generateChar(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith); 
  console.log(char);
  displayOutput(char);
 };
 
 function getPools() {
   let physicalValue = document.getElementById("physical-pool").value
-  let mentalValue = document.getElementById("mental-pool").value;
   let socialValue = document.getElementById("social-pool").value;
+  let mentalValue = document.getElementById("mental-pool").value;
+  
 
  
   switch (physicalValue) {
@@ -80,6 +82,23 @@ function getPools() {
        physicalPool = deadly();
        break;    
   };
+  switch (socialValue) {
+    case 'weak':
+       socialPool = weak();
+       break;
+    case 'average':
+       socialPool = average();
+       break;
+     case 'adept':
+       socialPool = adept();
+       break;
+     case 'formiddable':
+       socialPool = formiddable();
+       break;
+     case 'deadly':
+       socialPool = deadly();
+       break;    
+  };  
   switch (mentalValue) {
    case 'weak':
       mentalPool = weak();
@@ -97,24 +116,7 @@ function getPools() {
       mentalPool = deadly();
       break;    
  };
-  switch (socialValue) {
-   case 'weak':
-      socialPool = weak();
-      break;
-   case 'average':
-      socialPool = average();
-      break;
-    case 'adept':
-      socialPool = adept();
-      break;
-    case 'formiddable':
-      socialPool = formiddable();
-      break;
-    case 'deadly':
-      socialPool = deadly();
-      break;    
- };
-  }; 
+}; 
 
 function setDisciplines() { 
   npcDisciplines = getDisciplines(npcClan);
@@ -133,24 +135,24 @@ function setDisciplines() {
     npcDisciplines[2].level = parseInt(document.getElementById('npc-discipline-3-level').value);
 };  
 
-function generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith) {
+function generateChar(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith) {
   if (charToGen === 'mortal') {
-    return new NPC(npcName, physicalPool, mentalPool, socialPool, npcTalents);
+    return new NPC(npcName, physicalPool, socialPool, mentalPool, npcTalents);
     
   };
   
   if (charToGen === 'ghoul') {
-    return new Ghoul(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcDisciplines);
+    return new Ghoul(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcDisciplines);
     
   };
   
   if (charToGen === 'vampire') {
-    return new Vampire(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcDisciplines, npcGeneration, npcClan);
+    return new Vampire(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcDisciplines, npcGeneration, npcClan);
     
   };
   
   if (charToGen === 'hunter') {
-    return new Hunter(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcTrueFaith);
+    return new Hunter(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcTrueFaith);
     
   };
 };
