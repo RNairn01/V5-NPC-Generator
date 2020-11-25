@@ -54,6 +54,7 @@ function formChanged() {
 //Sets type of character to be generated
  char = generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith); 
  console.log(char);
+ displayOutput(char);
 };
 
 function getPools() {
@@ -115,10 +116,6 @@ function getPools() {
  };
   }; 
 
-
-
-
-
 function setDisciplines() { 
   npcDisciplines = getDisciplines(npcClan);
   function defaultDisciplines() {
@@ -158,8 +155,6 @@ function generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents,
   };
 };
 
-
-
 function enableDisable() {
 const vampNodes = document.getElementById("vampire-generator").getElementsByTagName('*');
 const hunterNodes = document.getElementById("true-faith").getElementsByTagName('*');
@@ -198,6 +193,12 @@ if (charToGen === 'vampire') {
  };
 };
 
+function displayOutput(character) {
+  document.getElementById("name-output").innerHTML = character.name;
+  document.getElementById("health-output").innerHTML = character.health;
+};
+
+
 
 updateButton.addEventListener('click', formChanged);
 clanButton.addEventListener('click', formChanged);
@@ -216,5 +217,5 @@ document.addEventListener("DOMContentLoaded", formChanged)
 
 export function randomInt(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+  };
 
