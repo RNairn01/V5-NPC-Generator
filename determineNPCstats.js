@@ -94,10 +94,6 @@ export function determineClan() {
     return clan;
 };
 
-export function setClan() {
-  return document.getElementById("clan").value;
-};
-
 export function determineGen() {
     let percentage = randomInt(1,100);
 

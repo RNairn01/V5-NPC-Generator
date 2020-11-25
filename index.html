@@ -19,11 +19,13 @@
         <option value="vampire" selected>Vampire</option>
         <option value="hunter">Hunter</option>
       </select>
-    </div>        
+    </div>
+
     <div>
       <input id='npc-name' type="text" placeholder="Enter NPC Name"/>
     </div>
-    <div>
+
+    <div id='dice-pools'>
       <div>
       <label for="phys">Physical Dice Pool:</label>
       <select name="phys" id="physical-pool">
@@ -55,6 +57,8 @@
         </select>
       </div>
     </div>
+
+    <div id='talents'>
       <div>
         <input id='npc-talent-1' type="text" placeholder="Enter Talent 1"/>
         <button id='random-talent-1' type="button">Random?</button> 
@@ -63,7 +67,21 @@
         <input id='npc-talent-2' type="text" placeholder="Enter Talent 2"/>
         <button id='random-talent-2' type="button">Random?</button> 
       </div>
-     
+    </div>
+
+     <div id='true-faith'>
+      <label for="faith-input">True Faith:</label>
+      <select name="faith-input" id="true-faith-input">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option> 
+      </select>
+      <button id='random-faith' type="button">Random?</button>
+     </div>
+
     <div id='vampire-generator'>
       <div>
         <label for="npc-clan">Clan:</label>
@@ -93,7 +111,8 @@
           <option value="random">Random</option>                                        
         </select>
         <button id='random-clan' type="button" class="vamp">Random?</button> 
-      </div> 
+      </div>
+
       <div id='npc-disciplines'>
         <div id='ghoul-allowed'>
         <label for="disc-1">Discipline 1:</label>
@@ -122,6 +141,7 @@
         </select>
         <button id='random-level-1' type="button" class="vamp">Random?</button>         
         </div>
+
         <div>
           <label for="disc-2">Discipline 2:</label>
           <select name="disc-2" id="npc-discipline-2" class="vamp">
@@ -149,6 +169,7 @@
            </select>
            <button id='random-level-2' type="button" class="vamp">Random?</button>           
           </div>
+
           <div>
             <label for="disc-3">Discipline 3:</label>
             <select name="disc-3" id="npc-discipline-3" class="vamp">
@@ -175,8 +196,10 @@
               <option value="5">5</option> 
             </select>
             <button id='random-level-3' type="button" class="vamp">Random?</button>            
-            </div>                  
+            </div> 
+
       </div>
+
       <div id='npc-generation'>
         <label for="gen" >Generation:</label>
         <select name="gen" id="npc-gen-option" class="vamp">

@@ -1,4 +1,4 @@
-import { determineClan, setClan, determineGen, setGeneration, randomTalent, weak, average, adept, formiddable, deadly } from './determineNPCstats.js';
+import { determineClan, setGeneration, randomTalent, weak, average, adept, formiddable, deadly } from './determineNPCstats.js';
 import { NPC, Ghoul, Vampire, Hunter } from './generateNPC.js';
 import { getDisciplines } from './disciplines.js';
 
@@ -13,15 +13,16 @@ let npcDisciplines = getDisciplines(npcClan);
 let physicalPool;
 let mentalPool;
 let socialPool;
-let button = document.getElementById('update-button');
-let randomTalent1 = document.getElementById('random-talent-1');
-let randomTalent2 = document.getElementById('random-talent-2');
-let randomClanButton = document.getElementById('random-clan');
-let randomDiscLevel1 = document.getElementById('random-level-1');
-let randomDiscLevel2 = document.getElementById('random-level-2');
-let randomDiscLevel3 = document.getElementById('random-level-3');
-let clanButton = document.getElementById('clan');
-let charButton = document.getElementById('char-to-gen');
+const updateButton = document.getElementById('update-button');
+const randomTalent1 = document.getElementById('random-talent-1');
+const randomTalent2 = document.getElementById('random-talent-2');
+const randomClanButton = document.getElementById('random-clan');
+const randomDiscLevel1 = document.getElementById('random-level-1');
+const randomDiscLevel2 = document.getElementById('random-level-2');
+const randomDiscLevel3 = document.getElementById('random-level-3');
+const clanButton = document.getElementById('clan');
+const charButton = document.getElementById('char-to-gen');
+const trueFaithButton = document.getElementById('random-faith');
 let char; 
 
 
@@ -30,7 +31,7 @@ function formChanged() {
 
  
  charToGen = document.getElementById("char-to-gen").value;
- enableDisableVamp();
+ enableDisable();
  npcName = document.getElementById("npc-name").value;
 
  //sets npc dice pools based on selection
@@ -43,10 +44,12 @@ function formChanged() {
  npcGeneration = setGeneration(); 
  
 //sets clan equal to user input or picks random clan if requested
- npcClan = setClan();
+ npcClan = document.getElementById("clan").value;
 
 //sets default disciplines based on clan choice and then handles discipline customization
  setDisciplines(); //TODO: Implement a more functional version of this
+
+ npcTrueFaith = document.getElementById('true-faith-input').value;
 
 //Sets type of character to be generated
  char = generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith); 
@@ -162,29 +165,46 @@ function generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents,
 
 
 
-function enableDisableVamp() {
-const childNodes = document.getElementById("vampire-generator").getElementsByTagName('*');
+function enableDisable() {
+const vampNodes = document.getElementById("vampire-generator").getElementsByTagName('*');
+const hunterNodes = document.getElementById("true-faith").getElementsByTagName('*');
+const ghoulNodes = document.getElementById("ghoul-allowed").getElementsByTagName('*');
+
+if (charToGen !== 'hunter') {
+  for (var node of hunterNodes) {
+  node.disabled = true;
+};
+};
 
 if (charToGen !== 'vampire') {
-  for (var node of childNodes) {
-  node.disabled = true
+  for (var node of vampNodes) {
+  node.disabled = true;
   };
 
-if (charToGen === 'ghoul') {
-  for (var node of document.getElementById("ghoul-allowed").getElementsByTagName('*')) {
-    node.disabled = false
+   if (charToGen === 'ghoul') {
+    for (var node of ghoulNodes) {
+      node.disabled = false;
+    };
+    document.getElementById('npc-discipline-2').value = 'none';
+    document.getElementById('npc-discipline-3').value = 'none';
   };
-};
+
+  if (charToGen === 'hunter') {
+    for (var node of hunterNodes) {
+    node.disabled = false;
+    };
+   };
  }; 
 
 if (charToGen === 'vampire') {
-  for (var node of childNodes) {
-    node.disabled = false
+  for (var node of vampNodes) {
+    node.disabled = false;
   };
-};
+ };
 };
 
-button.addEventListener('click', formChanged);
+
+updateButton.addEventListener('click', formChanged);
 clanButton.addEventListener('click', formChanged);
 charButton.addEventListener('click', formChanged);
 randomTalent1.addEventListener('click', function() {document.getElementById('npc-talent-1').value = randomTalent()});
@@ -194,6 +214,7 @@ randomClanButton.addEventListener('click', formChanged);
 randomDiscLevel1.addEventListener('click', function() {document.getElementById('npc-discipline-1-level').value = randomInt(0,5)});
 randomDiscLevel2.addEventListener('click', function() {document.getElementById('npc-discipline-2-level').value = randomInt(0,5)});
 randomDiscLevel3.addEventListener('click', function() {document.getElementById('npc-discipline-3-level').value = randomInt(0,5)});
+trueFaithButton.addEventListener('click', function() {document.getElementById('true-faith-input').value = randomInt(0,5)});
 
 document.addEventListener("DOMContentLoaded", formChanged)
 
