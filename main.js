@@ -196,8 +196,26 @@ if (charToGen === 'vampire') {
 };
 
 function displayOutput(character) {
-  document.getElementById("name-output").innerHTML = character.name;
-  document.getElementById("health-output").innerHTML = character.health;
+  document.getElementById("name-output").innerHTML = `Name - ${character.name}`;
+  document.getElementById("health-output").innerHTML = `Health - ${character.health}`;
+  document.getElementById("physical-dice-output").innerHTML = `Physical Dice Pool - ${character.physical}`;
+  document.getElementById("social-dice-output").innerHTML = `Social Dice Pool - ${character.social}`;
+  document.getElementById("mental-dice-output").innerHTML = `Mental Dice Pool - ${character.mental}`;
+  document.getElementById("talents-output").innerHTML = `Talents - ${character.talents[0]} | ${character.talents[1]}`;
+  if (character instanceof Hunter) {
+    document.getElementById("true-faith-output").innerHTML = `True Faith - ${character.trueFaith}`;
+  } else document.getElementById("true-faith-output").innerHTML = ``;
+  if (character instanceof Vampire) {
+    document.getElementById("clan-output").innerHTML = `Clan - ${character.clan}`;
+    document.getElementById("discipline-output").innerHTML = `Disciplines - ${character.disciplines[0].name} ${character.disciplines[0].level} | ${character.disciplines[1].name} ${character.disciplines[1].level} | ${character.disciplines[2].name} ${character.disciplines[2].level}`;
+    document.getElementById("generation-output").innerHTML = `Generation - ${character.generation}`;
+  } else if (character instanceof Ghoul) {
+    document.getElementById("discipline-output").innerHTML = `Discipline - ${character.disciplines[0].name} ${character.disciplines[0].level}`
+  } else {
+    document.getElementById("clan-output").innerHTML = ``;
+    document.getElementById("discipline-output").innerHTML = ``;
+    document.getElementById("generation-output").innerHTML = ``;
+  }
 };
 
 
