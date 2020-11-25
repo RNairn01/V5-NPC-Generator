@@ -121,15 +121,12 @@ function getPools() {
 
 function setDisciplines() { 
   npcDisciplines = getDisciplines(npcClan);
-  console.log(getDisciplines(npcClan))
-  console.log(npcDisciplines)
   function defaultDisciplines() {
     document.getElementById('npc-discipline-1').value = getDisciplines(npcClan)[0].name;
     document.getElementById('npc-discipline-2').value = getDisciplines(npcClan)[1].name;
     document.getElementById('npc-discipline-3').value = getDisciplines(npcClan)[2].name;
     };
     clanButton.addEventListener('click', defaultDisciplines); //TODO: change this so it sets the disciplines after input is selected rather than on click
-    console.log(getDisciplines(npcClan)[0].name)
     randomClanButton.addEventListener('click', defaultDisciplines);
     npcDisciplines[0].name = document.getElementById('npc-discipline-1').value;
     npcDisciplines[0].level = parseInt(document.getElementById('npc-discipline-1-level').value);
@@ -137,8 +134,6 @@ function setDisciplines() {
     npcDisciplines[1].level = parseInt(document.getElementById('npc-discipline-2-level').value);
     npcDisciplines[2].name = document.getElementById('npc-discipline-3').value;
     npcDisciplines[2].level = parseInt(document.getElementById('npc-discipline-3-level').value);
-    console.log(npcClan)
-    console.log(npcDisciplines)
 };  
 
 function generateChar(npcName, physicalPool, mentalPool, socialPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith) {
