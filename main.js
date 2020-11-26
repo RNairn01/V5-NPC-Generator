@@ -50,12 +50,13 @@ function formChanged() {
 //sets default disciplines based on clan choice and then handles discipline customization
  setDisciplines(); //TODO: Implement a more functional version of this
 
- npcTrueFaith = document.getElementById('true-faith-input').value;
+npcTrueFaith = document.getElementById('true-faith-input').value;
 
 //Sets type of character to be generated
  char = generateChar(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith); 
  console.log(char);
- displayOutput(char);
+ removeOutput();
+ updateButton.addEventListener('click', function() {displayOutput(char)});
 };
 
 function getPools() {
@@ -218,9 +219,18 @@ function displayOutput(character) {
   }
 };
 
+function removeOutput() {
+  document.getElementById("name-output").innerHTML = ``;
+  document.getElementById("health-output").innerHTML = ``;
+  document.getElementById("physical-dice-output").innerHTML = ``;
+  document.getElementById("social-dice-output").innerHTML = ``;
+  document.getElementById("mental-dice-output").innerHTML = ``;
+  document.getElementById("talents-output").innerHTML = ``;
+}
 
 
 updateButton.addEventListener('click', formChanged);
+//updateButton.addEventListener('click', displayOutput(char));
 clanButton.addEventListener('click', formChanged);
 charButton.addEventListener('click', formChanged);
 randomTalent1.addEventListener('click', function() {document.getElementById('npc-talent-1').value = randomTalent()});
