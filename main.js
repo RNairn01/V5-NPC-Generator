@@ -234,7 +234,6 @@ function removeOutput() {
 
 
 updateButton.addEventListener('click', formChanged);
-//updateButton.addEventListener('click', displayOutput(char));
 clanButton.addEventListener('click', formChanged);
 charButton.addEventListener('click', formChanged);
 randomTalent1.addEventListener('click', function() {document.getElementById('npc-talent-1').value = randomTalent()});
