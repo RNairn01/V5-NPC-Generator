@@ -226,6 +226,10 @@ function removeOutput() {
   document.getElementById("social-dice-output").innerHTML = ``;
   document.getElementById("mental-dice-output").innerHTML = ``;
   document.getElementById("talents-output").innerHTML = ``;
+  document.getElementById("true-faith-output").innerHTML = ``;
+  document.getElementById("clan-output").innerHTML = ``;
+  document.getElementById("discipline-output").innerHTML = ``;
+  document.getElementById("generation-output").innerHTML = ``;
 }
 
 
@@ -237,9 +241,9 @@ randomTalent1.addEventListener('click', function() {document.getElementById('npc
 randomTalent2.addEventListener('click', function() {document.getElementById('npc-talent-2').value = randomTalent()});
 randomClanButton.addEventListener('click', function() {document.getElementById('clan').value = determineClan()});
 randomClanButton.addEventListener('click', formChanged);
-randomDiscLevel1.addEventListener('click', function() {document.getElementById('npc-discipline-1-level').value = randomInt(0,5)});
-randomDiscLevel2.addEventListener('click', function() {document.getElementById('npc-discipline-2-level').value = randomInt(0,5)});
-randomDiscLevel3.addEventListener('click', function() {document.getElementById('npc-discipline-3-level').value = randomInt(0,5)});
+randomDiscLevel1.addEventListener('click', function() {document.getElementById('npc-discipline-1-level').value = randomInt(1,5)});
+randomDiscLevel2.addEventListener('click', function() {document.getElementById('npc-discipline-2-level').value = randomInt(1,5)});
+randomDiscLevel3.addEventListener('click', function() {document.getElementById('npc-discipline-3-level').value = randomInt(1,5)});
 trueFaithButton.addEventListener('click', function() {document.getElementById('true-faith-input').value = randomInt(0,5)});
 
 document.addEventListener("DOMContentLoaded", formChanged)

@@ -1,3 +1,38 @@
 body{
+    padding: 0px;
+    margin: 0px;
     text-align: center;
+    color: white;
+    background-color: #632f2f;
+}
+
+.output-box {
+    display: inline-block;
+    height: 20em;
+    width: 35em;
+    background-color:#e8e0cf;
+    color: #4c4c4c;
+    text-align: left;
+    padding: 0.1em, 0.5em, 0.5em, 0.5em;
+    margin: 0.5em;
+    border-radius: 2%;
+}
+
+.output-box h3 {
+    text-align: center;
+}
+
+.output-box p {
+    margin: 0.5em;
+}
+
+button {
+    border-radius: 1%;
+}
+
+select,
+button,
+input {
+    background-color:#4c4c4c;
+    color:white;
 }
