@@ -1,6 +1,6 @@
 import { determineClan, setGeneration, randomTalent, weak, average, adept, formiddable, deadly } from './determineNPCstats.js';
 import { NPC, Ghoul, Vampire, Hunter } from './generateNPC.js';
-import { getDisciplines } from './disciplines.js';
+import { getDisciplines, randomDiscipline } from './disciplines.js';
 
 let template = '';
 let charToGen = 'vampire';
@@ -35,6 +35,7 @@ function formChanged() {
  charToGen = document.getElementById("char-to-gen").value;
  fullRandomButton.addEventListener('click', function() {fullRandom(charToGen)});
  enableDisable();
+
  npcName = document.getElementById("npc-name").value; //TODO: Add random name generation
 
  //sets npc dice pools based on selection
@@ -254,6 +255,15 @@ function fullRandom(npcType) {
   //populate random talents
   document.getElementById('npc-talent-1').value = randomTalent();
   document.getElementById('npc-talent-2').value = randomTalent();
+  //populate true faith
+  if(charToGen === 'hunter') {
+    document.getElementById('true-faith-input').value = randomInt(0,5);
+  } else document.getElementById('true-faith-input').value = 0;
+  //populate ghoul discipline
+  if(charToGen === 'ghoul') {
+    document.getElementById('npc-discipline-1').value = randomDiscipline().name;
+    document.getElementById('npc-discipline-1-level').value = randomInt(0,1);
+  }
 
 };
 
