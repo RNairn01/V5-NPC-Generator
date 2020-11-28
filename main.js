@@ -15,6 +15,7 @@ let socialPool;
 let mentalPool;
 
 const updateButton = document.getElementById('update-button');
+const fullRandomButton = document.getElementById('full-random-button');
 const randomTalent1 = document.getElementById('random-talent-1');
 const randomTalent2 = document.getElementById('random-talent-2');
 const randomClanButton = document.getElementById('random-clan');
@@ -32,8 +33,9 @@ function formChanged() {
 
  
  charToGen = document.getElementById("char-to-gen").value;
+ fullRandomButton.addEventListener('click', function() {fullRandom(charToGen)});
  enableDisable();
- npcName = document.getElementById("npc-name").value;
+ npcName = document.getElementById("npc-name").value; //TODO: Add random name generation
 
  //sets npc dice pools based on selection
  getPools(); //TODO: Implement a more functional version of this
@@ -205,17 +207,13 @@ function displayOutput(character) {
   document.getElementById("talents-output").innerHTML = `Talents - ${character.talents[0]} | ${character.talents[1]}`;
   if (character instanceof Hunter) {
     document.getElementById("true-faith-output").innerHTML = `True Faith - ${character.trueFaith}`;
-  } else document.getElementById("true-faith-output").innerHTML = ``;
+  } 
   if (character instanceof Vampire) {
     document.getElementById("clan-output").innerHTML = `Clan - ${character.clan}`;
     document.getElementById("discipline-output").innerHTML = `Disciplines - ${character.disciplines[0].name} ${character.disciplines[0].level} | ${character.disciplines[1].name} ${character.disciplines[1].level} | ${character.disciplines[2].name} ${character.disciplines[2].level}`;
     document.getElementById("generation-output").innerHTML = `Generation - ${character.generation}`;
   } else if (character instanceof Ghoul) {
     document.getElementById("discipline-output").innerHTML = `Discipline - ${character.disciplines[0].name} ${character.disciplines[0].level}`
-  } else {
-    document.getElementById("clan-output").innerHTML = ``;
-    document.getElementById("discipline-output").innerHTML = ``;
-    document.getElementById("generation-output").innerHTML = ``;
   }
 };
 
@@ -230,10 +228,38 @@ function removeOutput() {
   document.getElementById("clan-output").innerHTML = ``;
   document.getElementById("discipline-output").innerHTML = ``;
   document.getElementById("generation-output").innerHTML = ``;
-}
+};
+
+function fullRandom(npcType) {
+  //TODO: Add random name generation
+  let randomPool = () => {
+    const rand = randomInt(0,4)
+    switch(rand) {
+      case 0:
+        return 'weak';
+      case 1:
+        return 'average';
+      case 2:
+        return 'adept';
+      case 3:
+        return 'formiddable';
+      case 4:
+        return 'deadly';
+    }
+  };
+  //populate dice pools
+  document.getElementById("physical-pool").value = randomPool();
+  document.getElementById("social-pool").value = randomPool();
+  document.getElementById("mental-pool").value = randomPool();
+  //populate random talents
+  document.getElementById('npc-talent-1').value = randomTalent();
+  document.getElementById('npc-talent-2').value = randomTalent();
+
+};
 
 
 updateButton.addEventListener('click', formChanged);
+fullRandomButton.addEventListener('click', formChanged);
 clanButton.addEventListener('click', formChanged);
 charButton.addEventListener('click', formChanged);
 randomTalent1.addEventListener('click', function() {document.getElementById('npc-talent-1').value = randomTalent()});
