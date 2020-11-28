@@ -124,20 +124,19 @@ function getPools() {
 
 function setDisciplines() { 
   npcDisciplines = getDisciplines(npcClan);
-  function defaultDisciplines() {
-    document.getElementById('npc-discipline-1').value = getDisciplines(npcClan)[0].name;
-    document.getElementById('npc-discipline-2').value = getDisciplines(npcClan)[1].name;
-    document.getElementById('npc-discipline-3').value = getDisciplines(npcClan)[2].name;
-    };
-    clanButton.addEventListener('click', defaultDisciplines); //TODO: change this so it sets the disciplines after input is selected rather than on click
-    randomClanButton.addEventListener('click', defaultDisciplines);
-    npcDisciplines[0].name = document.getElementById('npc-discipline-1').value;
-    npcDisciplines[0].level = parseInt(document.getElementById('npc-discipline-1-level').value);
-    npcDisciplines[1].name = document.getElementById('npc-discipline-2').value;
-    npcDisciplines[1].level = parseInt(document.getElementById('npc-discipline-2-level').value);
-    npcDisciplines[2].name = document.getElementById('npc-discipline-3').value;
-    npcDisciplines[2].level = parseInt(document.getElementById('npc-discipline-3-level').value);
+  npcDisciplines[0].name = document.getElementById('npc-discipline-1').value;
+  npcDisciplines[0].level = parseInt(document.getElementById('npc-discipline-1-level').value);
+  npcDisciplines[1].name = document.getElementById('npc-discipline-2').value;
+  npcDisciplines[1].level = parseInt(document.getElementById('npc-discipline-2-level').value);
+  npcDisciplines[2].name = document.getElementById('npc-discipline-3').value;
+  npcDisciplines[2].level = parseInt(document.getElementById('npc-discipline-3-level').value);
 };  
+
+function defaultDisciplines(clan) {
+  document.getElementById('npc-discipline-1').value = getDisciplines(clan)[0].name;
+  document.getElementById('npc-discipline-2').value = getDisciplines(clan)[1].name;
+  document.getElementById('npc-discipline-3').value = getDisciplines(clan)[2].name;
+  };
 
 function generateChar(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith) {
   if (charToGen === 'mortal') {
@@ -263,11 +262,21 @@ function fullRandom(npcType) {
   if(charToGen === 'ghoul') {
     document.getElementById('npc-discipline-1').value = randomDiscipline().name;
     document.getElementById('npc-discipline-1-level').value = randomInt(0,1);
+  };
+  //populate vampire stats
+  if(charToGen === 'vampire') {
+    document.getElementById('clan').value = determineClan();
+    defaultDisciplines(document.getElementById('clan').value);
+    document.getElementById('npc-discipline-1-level').value = randomInt(0,5);
+    document.getElementById('npc-discipline-2-level').value = randomInt(0,5);
+    document.getElementById('npc-discipline-3-level').value = randomInt(0,5);
+    document.getElementById("npc-gen-option").value = randomInt(4,13);
   }
+
 
 };
 
-
+//TODO: Clean up this button nightmare
 updateButton.addEventListener('click', formChanged);
 fullRandomButton.addEventListener('click', formChanged);
 clanButton.addEventListener('click', formChanged);
@@ -276,10 +285,12 @@ randomTalent1.addEventListener('click', function() {document.getElementById('npc
 randomTalent2.addEventListener('click', function() {document.getElementById('npc-talent-2').value = randomTalent()});
 randomClanButton.addEventListener('click', function() {document.getElementById('clan').value = determineClan()});
 randomClanButton.addEventListener('click', formChanged);
-randomDiscLevel1.addEventListener('click', function() {document.getElementById('npc-discipline-1-level').value = randomInt(1,5)});
-randomDiscLevel2.addEventListener('click', function() {document.getElementById('npc-discipline-2-level').value = randomInt(1,5)});
-randomDiscLevel3.addEventListener('click', function() {document.getElementById('npc-discipline-3-level').value = randomInt(1,5)});
+randomDiscLevel1.addEventListener('click', function() {document.getElementById('npc-discipline-1-level').value = randomInt(0,5)});
+randomDiscLevel2.addEventListener('click', function() {document.getElementById('npc-discipline-2-level').value = randomInt(0,5)});
+randomDiscLevel3.addEventListener('click', function() {document.getElementById('npc-discipline-3-level').value = randomInt(0,5)});
 trueFaithButton.addEventListener('click', function() {document.getElementById('true-faith-input').value = randomInt(0,5)});
+clanButton.addEventListener('click', function() {defaultDisciplines(npcClan)}); //TODO: change this so it sets the disciplines after input is selected rather than on click
+randomClanButton.addEventListener('click', function() {defaultDisciplines(npcClan)});
 
 document.addEventListener("DOMContentLoaded", formChanged)
 
