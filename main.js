@@ -168,17 +168,24 @@ const ghoulNodes = document.getElementById("ghoul-allowed").getElementsByTagName
 if (charToGen !== 'hunter') {
   for (var node of hunterNodes) {
   node.disabled = true;
+  node.hidden = true;
 };
 };
 
 if (charToGen !== 'vampire') {
   for (var node of vampNodes) {
   node.disabled = true;
+  node.hidden = true;
   };
 
    if (charToGen === 'ghoul') {
+    document.getElementById('npc-disciplines').disabled = false;
+    document.getElementById('npc-disciplines').hidden = false;
+    document.getElementById('ghoul-allowed').disabled = false;
+    document.getElementById('ghoul-allowed').hidden = false;
     for (var node of ghoulNodes) {
       node.disabled = false;
+      node.hidden = false;
     };
     document.getElementById('npc-discipline-2').value = 'none';
     document.getElementById('npc-discipline-3').value = 'none';
@@ -187,6 +194,7 @@ if (charToGen !== 'vampire') {
   if (charToGen === 'hunter') {
     for (var node of hunterNodes) {
     node.disabled = false;
+    node.hidden = false;
     };
    };
  }; 
@@ -194,6 +202,7 @@ if (charToGen !== 'vampire') {
 if (charToGen === 'vampire') {
   for (var node of vampNodes) {
     node.disabled = false;
+   node.hidden = false;
   };
  };
 };
