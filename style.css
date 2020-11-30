@@ -4,6 +4,7 @@ body{
     text-align: center;
     color: white;
     background-color: #632f2f;
+    font-family: "Crimson Text", serif;
 }
 
 .output-box {
@@ -30,6 +31,11 @@ button {
     border-radius: 1%;
 }
 
+button:hover,
+select:hover {
+    background-color:#383838;
+}
+
 select,
 button,
 input {
@@ -40,9 +46,9 @@ input {
 #generator {
     text-align: center;
     background-color: #471f1f;
-    margin: auto;
-    width: 30%;
-    height: 30%;
+    margin: 0 auto;
+    width: 450px;
+    height: 550px;
     padding: 2em 0em 5em 0em;
 }
 
@@ -50,6 +56,34 @@ input {
 #generator select,
 #generator button,
 #generator input {
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    margin: 0.2em 0.2em 0.2em 0.2em;
+    padding: 0.5em;
+    margin: 0.2em;
+}
+
+#generator label {
+    text-align: left;
+}
+
+#update-button {
+    position: relative;
+    top: 0.5rem;
+    width: 20rem;
+}
+
+.input-line {
+    margin: 0.2rem auto;
+}
+
+.type-selector {
+    position: relative;
+    bottom: 1rem;
+}
+
+.type-selector select {
+    width: 10rem;
+    text-align: center;
+}
+
+#npc-name {
+    width: 20rem;
 }

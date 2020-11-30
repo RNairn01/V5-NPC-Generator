@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <script src='main.js'  defer type='module'></script>
   <title>V5 NPC Generator</title>
 </head>
@@ -15,7 +17,7 @@
  <div id="generator">
     <form id='npc-input'>
     
-    <div>
+    <div class='type-selector'>
       <label for="char-gen">NPC Type:</label>
       <select name="char-gen" id="char-to-gen">
         <option value="mortal">Mortal</option>
@@ -29,12 +31,12 @@
       <button id='full-random-button' type='button'>Random character?</button>
     </div>
 
-    <div>
+    <div class='input-line'>
       <input id='npc-name' type="text" placeholder="Enter NPC Name"/>
     </div>
 
     <div id='dice-pools'>
-      <div>
+      <div class='input-line'>
       <label for="phys">Physical Dice Pool:</label>
       <select name="phys" id="physical-pool">
         <option value="weak">Weak</option>
@@ -45,7 +47,7 @@
       </select>
       </div>
       
-      <div>
+      <div class='input-line'>
         <label for="soc">Social Dice Pool:</label>
         <select name="soc" id="social-pool">
           <option value="weak">Weak</option>
@@ -56,7 +58,7 @@
         </select>
       </div>
             
-      <div>
+      <div class='input-line'>
         <label for="ment">Mental Dice Pool:</label>
         <select name="ment" id="mental-pool">
             <option value="weak">Weak</option>
@@ -69,17 +71,17 @@
      </div>
 
     <div id='talents'>
-      <div>
+      <div class='input-line'>
         <input id='npc-talent-1' type="text" placeholder="Enter Talent 1"/>
         <button id='random-talent-1' type="button">Random?</button> 
       </div>
-      <div>
+      <div class='input-line'>
         <input id='npc-talent-2' type="text" placeholder="Enter Talent 2"/>
         <button id='random-talent-2' type="button">Random?</button> 
       </div>
     </div>
 
-     <div id='true-faith'>
+     <div id='true-faith' class='input-line'>
       <label for="faith-input">True Faith:</label>
       <select name="faith-input" id="true-faith-input">
         <option value="0">0</option>
@@ -93,7 +95,7 @@
      </div>
 
     <div id='vampire-generator'>
-      <div>
+      <div class='input-line'>
         <label for="npc-clan">Clan:</label>
         <select name="npc-clan" id="clan" class="vamp">
           <option value="Banu Haqim">Banu Haqim</option>
@@ -124,7 +126,7 @@
       </div>
 
       <div id='npc-disciplines'>
-        <div id='ghoul-allowed'>
+        <div id='ghoul-allowed' class='input-line'>
         <label for="disc-1">Discipline 1:</label>
         <select name="disc-1" id="npc-discipline-1" class="vamp">
             <option value="none">None</option>
@@ -152,7 +154,7 @@
         <button id='random-level-1' type="button" class="vamp">Random?</button>         
         </div>
 
-        <div>
+        <div class='input-line'>
           <label for="disc-2">Discipline 2:</label>
           <select name="disc-2" id="npc-discipline-2" class="vamp">
             <option value="none">None</option>
@@ -180,7 +182,7 @@
            <button id='random-level-2' type="button" class="vamp">Random?</button>           
           </div>
 
-          <div>
+          <div class='input-line'>
             <label for="disc-3">Discipline 3:</label>
             <select name="disc-3" id="npc-discipline-3" class="vamp">
               <option value="none">None</option>
@@ -210,7 +212,7 @@
 
       </div>
 
-      <div id='npc-generation'>
+      <div id='npc-generation' class='input-line'>
         <label for="gen" >Generation:</label>
         <select name="gen" id="npc-gen-option" class="vamp">
           <option value="4">4</option>
