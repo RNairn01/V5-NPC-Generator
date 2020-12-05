@@ -25,6 +25,7 @@ const randomDiscLevel3 = document.getElementById('random-level-3');
 const clanButton = document.getElementById('clan');
 const charButton = document.getElementById('char-to-gen');
 const trueFaithButton = document.getElementById('random-faith');
+const saveButton = document.getElementById('save-button');
 let char; 
 
 
@@ -290,6 +291,13 @@ function fullRandom(npcType) {
 
 };
 
+function saveImage(node) {
+  domtoimage.toBlob(document.getElementById(node))
+    .then(function (blob) {
+        window.saveAs(blob, 'test.png');
+    });
+};
+
 //TODO: Clean up this button nightmare
 updateButton.addEventListener('click', formChanged);
 fullRandomButton.addEventListener('click', formChanged);
@@ -305,6 +313,7 @@ randomDiscLevel3.addEventListener('click', function() {document.getElementById('
 trueFaithButton.addEventListener('click', function() {document.getElementById('true-faith-input').value = randomInt(0,5)});
 clanButton.addEventListener('click', function() {defaultDisciplines(npcClan)}); //TODO: change this so it sets the disciplines after input is selected rather than on click
 randomClanButton.addEventListener('click', function() {defaultDisciplines(npcClan)});
+saveButton.addEventListener('click', function() {saveImage('output-box')});
 
 document.addEventListener("DOMContentLoaded", formChanged)
 

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <script src="./node_modules/dom-to-image/src/dom-to-image.js"></script>
+  <script src="./node_modules/file-saver/src/FileSaver.js"></script>
   <script src='main.js'  defer type='module'></script>
   <title>V5 NPC Generator</title>
 </head>
@@ -233,7 +233,7 @@
       <button id='update-button' type="button">Generate</button>
      </form> 
   </div>
-  <div class='output-box'>
+  <div class='output-box' id="output-box">
     <div id='output'>
       <h3>NPC Output</h3>
       <p id='name-output' class="output-line"></p>
@@ -248,6 +248,9 @@
       <p id='generation-output' class="output-line"></p>
     </div>
   </div> 
+  <div>
+    <button id="save-button" type="button">Save Image</button>
+  </div>
 
   
 

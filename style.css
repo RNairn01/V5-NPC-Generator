@@ -4,7 +4,7 @@ body{
     text-align: center;
     color: white;
     background-color: #632f2f;
-    font-family: "Crimson Text", serif;
+    font-family: serif;
 }
 
 .output-box {
@@ -37,6 +37,7 @@ body{
 
 .output-main {
     float: right;
+    max-width: 100%;
 }
 
 .output-number {
