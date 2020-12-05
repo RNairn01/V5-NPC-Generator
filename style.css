@@ -9,22 +9,45 @@ body{
 
 .output-box {
     display: inline-block;
-    height: 20em;
-    width: 35em;
+    position: relative;
+    min-height: 15em;
+    max-height: 20em;
+    width: 25em;
     background-color:#e8e0cf;
     color: #4c4c4c;
     text-align: left;
-    padding: 0.1em 0.5em 0.5em 0.5em;
+    padding: 0.1em 1em 1em 1em;
     margin: 0.5em;
     border-radius: 2%;
+    font-size: 1.5em;
 }
 
 .output-box h3 {
     text-align: center;
+    font-weight: 900;
 }
 
 .output-box p {
     margin: 0.5em;
+}
+
+.output-prefix {
+    font-weight: 700;
+}
+
+.output-main {
+    float: right;
+}
+
+.output-number {
+ 
+}
+
+.output-line {
+     background-color:#d4cebf75;
+     padding: 0em 1em;
+     border-radius: 1em;
+     font-weight: 500;
 }
 
 button {
@@ -87,3 +110,4 @@ input {
 #npc-name {
     width: 20rem;
 }
+

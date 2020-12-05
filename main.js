@@ -208,21 +208,26 @@ if (charToGen === 'vampire') {
 };
 
 function displayOutput(character) {
-  document.getElementById("name-output").innerHTML = `Name - ${character.name}`;
-  document.getElementById("health-output").innerHTML = `Health - ${character.health}`;
-  document.getElementById("physical-dice-output").innerHTML = `Physical Dice Pool - ${character.physical}`;
-  document.getElementById("social-dice-output").innerHTML = `Social Dice Pool - ${character.social}`;
-  document.getElementById("mental-dice-output").innerHTML = `Mental Dice Pool - ${character.mental}`;
-  document.getElementById("talents-output").innerHTML = `Talents - ${character.talents[0]} | ${character.talents[1]}`;
+  document.getElementById("name-output").innerHTML = `<span class="output-prefix">Name - </span><span class="output-main">${character.name}</span>`;
+  document.getElementById("health-output").innerHTML = `<span class="output-prefix">Health - </span><span class="output-main output-number">${character.health}</span>`;
+  document.getElementById("physical-dice-output").innerHTML = `<span class="output-prefix">Physical Dice Pool - </span><span class="output-main output-number">${character.physical}</span>`;
+  document.getElementById("social-dice-output").innerHTML = `<span class="output-prefix">Social Dice Pool - </span><span class="output-main output-number">${character.social}</span>`;
+  document.getElementById("mental-dice-output").innerHTML = `<span class="output-prefix">Mental Dice Pool - </span><span class="output-main output-number">${character.mental}</span>`;
+  
+  if (character.talents.some(e => e != "")) {
+    if (character.talents.every(e => e != "")) {
+    document.getElementById("talents-output").innerHTML = `<span class="output-prefix">Talents - </span><span class="output-main">${character.talents[0]} | ${character.talents[1]}</span>`;
+    } else document.getElementById("talents-output").innerHTML = `<span class="output-prefix">Talents - </span><span class="output-main">${character.talents.filter(e => e != "")[0]}</span>`;
+  }
   if (character instanceof Hunter) {
-    document.getElementById("true-faith-output").innerHTML = `True Faith - ${character.trueFaith}`;
+    document.getElementById("true-faith-output").innerHTML = `<span class="output-prefix">True Faith - </span><span class="output-main">${character.trueFaith}`;
   } 
   if (character instanceof Vampire) {
-    document.getElementById("clan-output").innerHTML = `Clan - ${character.clan}`;
-    document.getElementById("discipline-output").innerHTML = `Disciplines - ${character.disciplines[0].name} ${character.disciplines[0].level} | ${character.disciplines[1].name} ${character.disciplines[1].level} | ${character.disciplines[2].name} ${character.disciplines[2].level}`;
-    document.getElementById("generation-output").innerHTML = `Generation - ${character.generation}`;
+    document.getElementById("clan-output").innerHTML = `<span class="output-prefix">Clan - </span><span class="output-main">${character.clan}</span>`;
+    document.getElementById("discipline-output").innerHTML = `<span class="output-prefix">Disciplines - </span><span class="output-main">${character.disciplines[0].name} ${character.disciplines[0].level} | ${character.disciplines[1].name} ${character.disciplines[1].level} | ${character.disciplines[2].name} ${character.disciplines[2].level}</span>`;
+    document.getElementById("generation-output").innerHTML = `<span class="output-prefix">Generation - </span><span class="output-main output-number">${character.generation}</span>`;
   } else if (character instanceof Ghoul) {
-    document.getElementById("discipline-output").innerHTML = `Discipline - ${character.disciplines[0].name} ${character.disciplines[0].level}`
+    document.getElementById("discipline-output").innerHTML = `<span class="output-prefix">Discipline - </span><span class="output-main">${character.disciplines[0].name} ${character.disciplines[0].level}</span>`
   }
 };
 
