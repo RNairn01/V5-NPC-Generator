@@ -291,10 +291,10 @@ function fullRandom(npcType) {
 
 };
 
-function saveImage(node) {
+function saveImage(node, name) {
   domtoimage.toBlob(document.getElementById(node))
     .then(function (blob) {
-        window.saveAs(blob, 'test.png');
+        window.saveAs(blob, name + '.png');
     });
 };
 
@@ -313,7 +313,7 @@ randomDiscLevel3.addEventListener('click', function() {document.getElementById('
 trueFaithButton.addEventListener('click', function() {document.getElementById('true-faith-input').value = randomInt(0,5)});
 clanButton.addEventListener('click', function() {defaultDisciplines(npcClan)}); //TODO: change this so it sets the disciplines after input is selected rather than on click
 randomClanButton.addEventListener('click', function() {defaultDisciplines(npcClan)});
-saveButton.addEventListener('click', function() {saveImage('output-box')});
+saveButton.addEventListener('click', function() {saveImage('output-box', 'NPC')}); //TODO: Fix Download text overflow
 
 document.addEventListener("DOMContentLoaded", formChanged)
 
