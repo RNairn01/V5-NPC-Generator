@@ -1,6 +1,7 @@
 import { determineClan, setGeneration, randomTalent, weak, average, adept, formiddable, deadly } from './determineNPCstats.js';
 import { NPC, Ghoul, Vampire, Hunter } from './generateNPC.js';
 import { getDisciplines, randomDiscipline } from './disciplines.js';
+import { getRandomName } from './names.js';
 
 let template = '';
 let charToGen = 'vampire';
@@ -26,6 +27,7 @@ const clanButton = document.getElementById('clan');
 const charButton = document.getElementById('char-to-gen');
 const trueFaithButton = document.getElementById('random-faith');
 const saveButton = document.getElementById('save-button');
+const randomNameButton = document.getElementById('random-name-button');
 let char; 
 
 
@@ -246,7 +248,10 @@ function removeOutput() {
 };
 
 function fullRandom(npcType) {
-  //TODO: Add random name generation
+  //get random name
+  getRandomName();
+
+  //get random pool selections
   let randomPool = () => {
     const rand = randomInt(0,4)
     switch(rand) {
@@ -303,6 +308,7 @@ updateButton.addEventListener('click', formChanged);
 fullRandomButton.addEventListener('click', formChanged);
 clanButton.addEventListener('click', formChanged);
 charButton.addEventListener('click', formChanged);
+randomNameButton.addEventListener('click', getRandomName);
 randomTalent1.addEventListener('click', function() {document.getElementById('npc-talent-1').value = randomTalent()});
 randomTalent2.addEventListener('click', function() {document.getElementById('npc-talent-2').value = randomTalent()});
 randomClanButton.addEventListener('click', function() {document.getElementById('clan').value = determineClan()});
