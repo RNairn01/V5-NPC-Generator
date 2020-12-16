@@ -69,13 +69,13 @@ export function getDisciplines(clan) {
     case 'Ravnos':
         return [animalism, fortitude, obfuscate];
     case 'Salubri':
-        return [auspex, fortitude, obfuscate];
+        return [auspex, dominate, fortitude];
     case 'Toreador':
         return [auspex, celerity, presence];
     case 'Tremere':
         return [auspex, dominate, bloodSorcery];
     case 'Tzimisce':
-        return [animalism, auspex, protean];
+        return [animalism, dominate, protean];
     case 'Ventrue':
         return [dominate, fortitude, presence];                          
  };
