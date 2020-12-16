@@ -317,9 +317,9 @@ randomDiscLevel1.addEventListener('click', function() {document.getElementById('
 randomDiscLevel2.addEventListener('click', function() {document.getElementById('npc-discipline-2-level').value = randomInt(0,5)});
 randomDiscLevel3.addEventListener('click', function() {document.getElementById('npc-discipline-3-level').value = randomInt(0,5)});
 trueFaithButton.addEventListener('click', function() {document.getElementById('true-faith-input').value = randomInt(0,5)});
-clanButton.addEventListener('click', function() {defaultDisciplines(npcClan)}); //TODO: change this so it sets the disciplines after input is selected rather than on click
+clanButton.addEventListener('click', function() {defaultDisciplines(npcClan)});
 randomClanButton.addEventListener('click', function() {defaultDisciplines(npcClan)});
-saveButton.addEventListener('click', function() {saveImage('output-box', 'NPC')}); //TODO: Fix Download text overflow
+saveButton.addEventListener('click', function() {saveImage('save-box', 'NPC')}); 
 
 document.addEventListener("DOMContentLoaded", formChanged)
 
