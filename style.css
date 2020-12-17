@@ -12,7 +12,8 @@ body{
     position: relative;
     min-height: 25rem;
     max-height: 50rem;
-    width: 80rem;
+    min-width: 50rem;
+    max-width: 80rem;
     background-color:#e8e0cf;
     color: #4c4c4c;
     text-align: left;
