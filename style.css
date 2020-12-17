@@ -12,8 +12,7 @@ body{
     position: relative;
     min-height: 25rem;
     max-height: 50rem;
-    min-width: 50rem;
-    max-width: 80rem;
+    width: 80rem;
     background-color:#e8e0cf;
     color: #4c4c4c;
     text-align: left;
@@ -73,16 +72,17 @@ input {
 
 #generator {
     max-height: 50rem;
+    width: 100%;
 }
 
 #npc-input {
     display: inline-block;
+    position: relative;
     text-align: center;
     background-color: #471f1f;
-    margin: 0rem auto;
-    min-width: 30rem;
-    max-width: 50rem;
-    max-height: 100%;
+    margin: 0 auto;
+    width: 50rem;
+    min-height: 25rem;
     padding: 2rem 0;
 }
 
@@ -100,14 +100,6 @@ input {
 
 #update-button {
     width: 20rem;
-}
-
-/* .input-line {
-    margin: 0.2rem auto;
-} */
-
-.type-selector {
-    position: relative;
 }
 
 .type-selector select {
