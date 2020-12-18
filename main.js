@@ -60,7 +60,6 @@ npcTrueFaith = document.getElementById('true-faith-input').value;
 
 //Sets type of character to be generated
  char = generateChar(npcName, physicalPool, socialPool, mentalPool, npcTalents, npcDisciplines, npcGeneration, npcClan, npcTrueFaith); 
- console.log(char);
  removeOutput();
  updateButton.addEventListener('click', function() {displayOutput(char)});
 };
@@ -229,16 +228,8 @@ function displayOutput(character) {
   if (character instanceof Vampire) {
     document.getElementById("clan-output").innerHTML = `<span class="output-prefix">Clan - </span><span class="output-main">${character.clan}</span>`;
     
-    if (character.disciplines.some(e => e.level != 0)) {
-    document.getElementById("discipline-output").innerHTML = `<span class="output-prefix">Disciplines - </span> <span class="output-main">`;
-    for (let e = 0; e < character.disciplines.length; e++) {
-      if (character.disciplines[e].level != 0 && e != character.disciplines.length-1) {
-        document.getElementById("discipline-output").innerHTML += ` ${character.disciplines[e].name} ${character.disciplines[e].level} | `;
-      } else if (character.disciplines[e].level != 0) {
-        document.getElementById("discipline-output").innerHTML += ` ${character.disciplines[e].name} ${character.disciplines[e].level}`;
-      }
-    }
-    document.getElementById("discipline-output").innerHTML += `</span>`;
+    if (character.disciplines.some(e => e.level != 0) && character.disciplines.some(e => e.name != 'none')) {
+    document.getElementById("discipline-output").innerHTML = `<span class="output-prefix">Disciplines - </span> <span class="output-main"> ${character.disciplines[0].name} ${character.disciplines[0].level} | ${character.disciplines[1].name} ${character.disciplines[1].level} | ${character.disciplines[2].name} ${character.disciplines[2].level} </span>`;
   }
    document.getElementById("generation-output").innerHTML = `<span class="output-prefix">Generation - </span><span class="output-main output-number">${character.generation}</span>`;
 
