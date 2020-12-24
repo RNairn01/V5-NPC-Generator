@@ -36,7 +36,6 @@ function formChanged() {
 
  
  charToGen = document.getElementById("char-to-gen").value;
- fullRandomButton.addEventListener('click', function() {fullRandom(charToGen)});
  enableDisable();
 
  npcName = document.getElementById("npc-name").value; //TODO: Add random name generation
@@ -254,6 +253,8 @@ function removeOutput() {
 };
 
 function fullRandom(npcType) {
+  charToGen = document.getElementById("char-to-gen").value;
+
   //get random name
   getRandomName();
 
@@ -311,9 +312,9 @@ function saveImage(node, name) {
 
 //TODO: Clean up this button nightmare
 updateButton.addEventListener('click', formChanged);
-fullRandomButton.addEventListener('click', formChanged);
-clanButton.addEventListener('click', formChanged);
-charButton.addEventListener('click', formChanged);
+fullRandomButton.addEventListener('click', function() {fullRandom(charToGen)});
+clanButton.addEventListener('input', formChanged);
+charButton.addEventListener('input', formChanged);
 randomNameButton.addEventListener('click', getRandomName);
 randomTalent1.addEventListener('click', function() {document.getElementById('npc-talent-1').value = randomTalent()});
 randomTalent2.addEventListener('click', function() {document.getElementById('npc-talent-2').value = randomTalent()});

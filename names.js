@@ -1,5 +1,4 @@
 export function getRandomName() {
-  let name;
      const getResponse = async () => {      
         const url = "https://randomuser.me/api/?inc=name&noinfo&nat=us,ie,fr,gb,au,ca,de,fi"; 
          try {
